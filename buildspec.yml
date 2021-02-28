@@ -1,0 +1,20 @@
+version: 0.2
+
+phases: 
+    install:
+        runtime-versions:
+            nodejs: 10
+        commands:
+            - echo "installing django app on beanstalk"
+    pre_build:
+        commands: 
+            - echo "Pre build phase of django app"
+    build:
+        commands:
+            - echo "... build phase ..."
+            - echo "We will run a simple test to check text CICD"
+            - grep -Fq "CICD" index.html
+    post_build:
+        commands:
+            - echo "we are in the post build phase"
+            
