@@ -3,12 +3,13 @@ version: 0.2
 phases: 
     install:
         runtime-versions:
-            python: 3.8.0
+            python: 3.8
         commands:
             - echo "installing django app on beanstalk"
     pre_build:
         commands: 
             - echo "Pre build phase of django app"
+            - pip install -r requirements.txt
     build:
         commands:
             - echo "... build phase ..."
@@ -16,5 +17,5 @@ phases:
             - grep -Fq "CICD" ./djangoapp/templates/index.html
     post_build:
         commands:
-            - echo "we are in the post build phase"
+            - echo "Post build phase..."
             
